@@ -6,6 +6,7 @@ export async function up(knex: Knex): Promise<void> {
     table.bigInteger('dialogue_id').notNullable().index();
     table.integer('queue').notNullable();
     table.string('question').notNullable();
+    table.string('translate').notNullable();
     table.specificType('answer', 'text[]');
   });
 }
