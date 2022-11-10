@@ -28,9 +28,7 @@ describe('Testing Users', () => {
 
       const usersRoute = new UserRoute();
       const app = new App([usersRoute]);
-      const response = await request(app.getServer())
-        .post(`${usersRoute.path}`)
-        .send(userData);
+      const response = await request(app.getServer()).post(`${usersRoute.path}`).send(userData);
 
       expect(response.status).toEqual(201);
       expect(response.body.data.name).toEqual(userData.name);

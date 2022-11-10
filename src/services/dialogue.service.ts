@@ -19,26 +19,23 @@ class DialogueService {
   }
 
   public async createDialogue(dialogueData: CreateDialogueDto): Promise<Dialogue> {
-    if (isEmpty(dialogueData)) throw new HttpException(400, "dialogueData is empty");
+    if (isEmpty(dialogueData)) throw new HttpException(400, 'dialogueData is empty');
 
     const findDialogue: Dialogue = await DialogueModel.query().select().where('title', '=', dialogueData.title).first();
     if (findDialogue) throw new HttpException(409, `This title ${dialogueData.title} already exists`);
 
-    const createDialogueData: Dialogue = await DialogueModel.query()
-      .insert(dialogueData);
+    const createDialogueData: Dialogue = await DialogueModel.query().insert(dialogueData);
 
     return createDialogueData;
   }
 
   public async updateDialogue(dialogueId: number, dialogueData: Dialogue): Promise<Dialogue> {
-    if (isEmpty(dialogueData)) throw new HttpException(400, "dialogueData is empty");
+    if (isEmpty(dialogueData)) throw new HttpException(400, 'dialogueData is empty');
 
     const findDialogue: Dialogue = await DialogueModel.query().select().where('id', '=', dialogueId).first();
     if (!findDialogue) throw new HttpException(409, "Dialogue doesn't exist");
 
-    await DialogueModel.query()
-      .update(dialogueData)
-      .where('id', '=', dialogueId);
+    await DialogueModel.query().update(dialogueData).where('id', '=', dialogueId);
 
     const updateDialogueData: Dialogue = await DialogueModel.query().select().where('id', '=', dialogueId).first();
 
