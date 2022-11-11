@@ -1,8 +1,8 @@
-export interface User {
+export interface DialogueFlow {
   id: number;
   dialogue_id: number;
   queue: number;
-  question: string;
-  translate: string;
-  answer: string[];
+  type: string;
+  ru_translate: string;
+  text: string;
 }

@@ -5,9 +5,9 @@ export async function up(knex: Knex): Promise<void> {
     table.bigIncrements('id').unsigned().primary();
     table.bigInteger('dialogue_id').notNullable().index();
     table.integer('queue').notNullable();
-    table.string('question').notNullable();
-    table.string('translate').notNullable();
-    table.specificType('answer', 'text[]');
+    table.string('type').notNullable();
+    table.string('text').notNullable();
+    table.string('ru_translate').notNullable();
   });
 }
 
