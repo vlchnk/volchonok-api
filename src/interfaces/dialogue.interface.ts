@@ -1,4 +1,4 @@
-import { DialogueFlow } from './dialogue-flow.interface'
+import { DialogueFlow } from './dialogue-flow.interface';
 
 export interface Dialogue {
   id: number;
